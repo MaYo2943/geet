@@ -59,6 +59,8 @@ module Geet
         @api_interface.send_request(api_path, http_method: :put)
       end
 
+      # See https://developer.github.com/v3/pulls/review_requests/#create-a-review-request
+      #
       def request_review(reviewers)
         api_path = "pulls/#{number}/requested_reviewers"
         request_data = { reviewers: reviewers }

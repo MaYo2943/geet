@@ -11,6 +11,8 @@ module Geet
         @api_interface = api_interface
       end
 
+      # See https://docs.gitlab.com/ee/api/members.html#list-all-members-of-a-group-or-project
+      #
       # Returns an array of User instances
       #
       def self.list_collaborators(api_interface)

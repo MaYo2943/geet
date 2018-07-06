@@ -53,6 +53,8 @@ module Geet
         new(response.fetch('login'), api_interface)
       end
 
+      # See https://developer.github.com/v3/repos/collaborators/#list-collaborators
+      #
       # Returns an array of User instances
       #
       def self.list_collaborators(api_interface)

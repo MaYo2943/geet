@@ -6,6 +6,8 @@ module Geet
     autoload :AbstractIssue, File.expand_path('abstract_issue', __dir__)
 
     class Issue < Geet::Github::AbstractIssue
+      # See https://developer.github.com/v3/issues/#create-an-issue
+      #
       def self.create(title, description, api_interface)
         api_path = 'issues'
         request_data = { title: title, body: description, base: 'master' }
@@ -17,6 +19,8 @@ module Geet
         new(issue_number, api_interface, title, link)
       end
 
+      # See AbstractIssue#list for the endpoint
+      #
       def self.list(api_interface, assignee: nil, milestone: nil)
         super do |issue_data|
           !issue_data.key?('pull_request')
