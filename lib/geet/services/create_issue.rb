@@ -19,6 +19,14 @@ module Geet
           labels: nil, milestone: nil, assignees: nil, no_open_issue: nil,
           **
       )
+puts <<~LIST
+  @repository.authenticated_user.has_permission?(PERMISSION_WRITE)
+  find_and_select_attributes(labels, milestone, assignees)
+  edit_issue(issue, selected_labels, selected_milestone, selected_assignees)
+  issue.assign_users(usernames)
+  issue.edit(milestone: milestone.number)
+  issue.add_labels(selected_labels.map(&:name))
+LIST
         # Inefficient (in worst case, triples the pre issue creation waiting time: #collaborator?,
         # #has_permissions?, and the attributes batch), but not trivial to speed up. Not difficult
         # either, but currently not worth spending time.
